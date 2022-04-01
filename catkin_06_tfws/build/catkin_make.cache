@@ -1,0 +1,2 @@
+learning_tf
+-DCATKIN_DEVEL_PREFIX=/home/jacky/桌面/Ros_Template/catkin_06_tfws/devel -DCMAKE_INSTALL_PREFIX=/home/jacky/桌面/Ros_Template/catkin_06_tfws/install -G Unix Makefiles

@@ -1,0 +1,8 @@
+prefix=/home/jacky/桌面/Ros_Template/catkin_05_parameter/devel
+
+Name: learning_parameter
+Description: Description of learning_parameter
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

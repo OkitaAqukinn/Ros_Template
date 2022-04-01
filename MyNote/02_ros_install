@@ -1,0 +1,56 @@
+第一个：sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+第二个：sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
+第三个：
+sudo apt update
+sudo apt install ros-noetic-desktop-full
+第四个：
+sudo rosdep init
+rosdep update
+如果失败：#打开hosts文件
+sudo gedit /etc/hosts
+#在文件末尾添加
+151.101.84.133 raw.githubusercontent.com
+#保存后退出再尝试
+来自：https://blog.csdn.net/u013468614/article/details/102917569
+第五个：
+echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
+source ~/.bashrc
+最后一个：
+sudo apt install python-rosinstall python-rosinstall-generator python-wstool build-essential
+
+
+重要安装教程：
+https://wiki.ros.org/
+https://www.bilibili.com/video/BV12K411F7wq?p=2&spm_id_from=pageDriver
+
+小海龟测试：
+roscore,
+rosrun turtlesim turtlesim_node(shift+ctrl+t),
+rosrun turtlesim turtle_teleop_key(shift+ctrl+t)
+
+一些基本命令：
+话题相关
+rqt_graph:基于qt的可视化工具，了解整个系统的全貌）（节点与话题等）
+rosnode：显示系统所有节点相关信息，后可接许多信息(list、info等)
+rostopic：与话题相关的命令行工具；
+rostopic pub (-r 10(循环)) /turtle1/cmd_evl geometry_msgs/Twist 
+"linear:x:
+	y:
+	z:
+angular:x:
+	y:
+	z:" 
+话题名+发布消息数据结构+消息具体数据内容
+rosmsg show:数据类型
+
+服务相关：
+rosservice list：即可显示后面添加服务内容
+如rosservice call/spawn tab  生成新海龟
+
+话题记录：rosbag record -a -O cmd_record
+话题复现：rosbag play cmd_record.bagS
+
+
+
+
+

@@ -1,0 +1,9 @@
+/home/jacky/桌面/Ros_Template/catkin_05_parameter/install/_setup_util.py
+/home/jacky/桌面/Ros_Template/catkin_05_parameter/install/env.sh
+/home/jacky/桌面/Ros_Template/catkin_05_parameter/install/setup.bash
+/home/jacky/桌面/Ros_Template/catkin_05_parameter/install/local_setup.bash
+/home/jacky/桌面/Ros_Template/catkin_05_parameter/install/setup.sh
+/home/jacky/桌面/Ros_Template/catkin_05_parameter/install/local_setup.sh
+/home/jacky/桌面/Ros_Template/catkin_05_parameter/install/setup.zsh
+/home/jacky/桌面/Ros_Template/catkin_05_parameter/install/local_setup.zsh
+/home/jacky/桌面/Ros_Template/catkin_05_parameter/install/.rosinstall

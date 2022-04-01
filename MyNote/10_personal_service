@@ -1,0 +1,36 @@
+1.如何自定义服务数据
+①定义srv文件
+在功能包的根目录下创建srv文件夹
+Person.srv中注意要用“---”区分request数据和response数据
+②在package.xml中添加功能包依赖
+<build_depend>message_generation</build_depend>
+<exec_depend>message_runtime</exec_depend>
+③在CMakeList.txt添加编译选项
+find_package下添加message_generation
+Declare ROS messages, services and actions栏下添加
+add_service_files(FILES Person.srv)
+generate_messages(DEPENDENCIES std_msgs)（根据依赖产生头文件）
+catkin_package的依赖取消注释，并添加message_runtime
+④编译
+编译完成后即可在devel/include下看到编译产生的头文件
+2.创建服务器代码（调用刚刚生成的头文件）（Client+Server）
+①初始化ROS实例
+②创建Server实例
+③循环等待服务请求，进入回调函数
+④在回调函数中完成服务功能的处理，并反馈应答数据
+3.配置服务器、客户端代码编译规则（CMakeLists.txt）
+add_executable(person_server src/person_server.cpp)
+target_link_libraries(person_server ${catkin_LIBRARIES})
+add_dependencies(person_server ${PROJECT_NAME}_gencpp)
+
+add_executable(person_client src/person_client.cpp)
+target_link_libraries(person_client ${catkin_LIBRARIES})
+add_dependencies(person_client ${PROJECT_NAME}_gencpp)
+设置需要编译的代码和生成可执行文件
+设置链接库
+添加依赖项
+4.运行
+roscore
+rosrun learning_service person_server
+rosrun learning_service person_client
+

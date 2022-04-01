@@ -1,0 +1,35 @@
+Launch文件：通过XML文件实现多节点的配置和启动（可自动启动ROS Master）
+Launch文件常用语法：
+1.launch文件中的根元素采用<launch>标签定义
+<launch>
+...
+</launch>
+2.<node>
+（启动节点）<node pkg="package-name" type="executable-name" name="node-name"/>
+pkg:节点所在的功能包名称
+type:节点的可执行文件名称
+name:节点运行时的名称（和上章重映射同理）
+还有其他可选属性，output.respawn.required.ns.args等
+3.参数设置
+<param>/<rosparam>:
+设置ROS系统运行中的参数，存储在参数服务器中
+<param name="output_frame" value="odom"/>
+name:参数名 value:参数值
+也可加载参数文件中的多个参数
+<arg>
+launch文件内部的局部变量，仅限于launch文件使用
+<arg name="arg-name" default="arg-value"/>
+name:参数名 value:参数值
+也可用语言调用，不再赘述
+4.重映射<remap>
+重映射ROS计算图资源的命名
+<remap from="/turtlebot/cmd_vel" to="cmd_vel"/>
+from:原命名   to:映射后命名
+5.嵌套<include>
+包含其他launch文件，类似C中的头文件，不再赘述
+--------------------------------------------------------
+创建launch功能包的时候并不需要添加什么依赖，因为都是一些链接
+功能包里创建一个launch文件夹 
+
+
+

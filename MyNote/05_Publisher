@@ -1,0 +1,44 @@
+1.创建功能包：
+cd ~/catkin_xxx/src
+catkin_create_pkg learning_topic roscpp rospy std_msgs geometry_msgs turtlesim
+2.创建发布者代码（C++）：
+（如何实现一个发布者）
+①初始化ROS节点
+②向ROS Master注册节点信息，包括发布的话题名和话题中的消息类型；
+③创建消息数据；
+④按照一定频率循环发布消息
+3.配置发布者代码编译规则
+(修改CMakeLists.txt)
+将以下两句话：
+add_executable(velocity_publisher src/velocity_publisher.cpp)
+target_link_libraries(velocity_publisher ${catkin_LIBRARIES})
+添加到“build”栏下，意为将cpp编译成可执行文件，并把可执行文件与ros相关库做链接
+4.编译并运行发布者
+cd ~/catkin_xxx
+catkin_make
+source devel/setup.bash
+如果不想每次打开终端都设置一次环境变量，可以直接在主目录下打开隐藏文件bashrc，最后一行添加source 路径下setup.bash
+roscore
+rosrun turtlesim turtlesim_node
+rosrun learning_topic velocity_publisher
+
+
+以上为cpp，py实现同理
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

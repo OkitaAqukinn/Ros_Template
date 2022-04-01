@@ -1,0 +1,27 @@
+工作空间（workspace）是一个存放工程开发相关文件的文件夹其中含子文件夹：
+src：代码空间
+build：编译空间（编译产生的一些中间文件）
+devel：开发空间（编译生成的可执行文件、库、脚本等）
+install：安装空间（类似Windows里programfile）
+
+创建工作空间：mkdir -p ~/catkin_xxx/src
+	      cd ~/catkin_xxx/src
+	      catkin_init_workspace(把一个普通文件夹变成ros工作空间)
+编译工作空间：cd ~/catkin_xxx/
+	      catkin_make
+	      catkin_make install(生成安装空间文件夹)
+设置环境变量：source devel/setup.bash
+检查环境变量：echo $ROS_PACKAGE_PATH
+
+创建功能包（是源码的最小单元）
+创建功能包：cd ~/catkin_xxx/src
+           catkin_create_pkg test_pkg std_msgs rospy roscpp
+           (功能包名+依赖)
+创建成功后  src放置功能包代码，include放置头文件
+另外还有两个.txt文件和.xml文件，有这两个才是功能包而非普通文件夹
+编译功能包：cd~/catkin_xxx
+            catkin_make
+            source ~/catkin_xxx/devel/setup.bash	
+
+
+在同一工作空间下，不允许存在同名功能包

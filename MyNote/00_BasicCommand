@@ -1,0 +1,9 @@
+cd /home/jacky/  改变工作目录
+pwd              显示当前绝对路径
+mkdir            创建文件夹
+ls               列出目录内容
+touch            创建新的文件
+mv               剪切
+cp               复制
+rm               删除
+sudo             管理员身份执行    

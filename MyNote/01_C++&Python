@@ -1,0 +1,36 @@
+for循环：
+
+C++：
+#include<iostream>
+
+using namespace std;
+int main
+
+{
+	int a = 5;
+	for(a; a < 10; a++)
+	{
+		cout << "a = " << a << endl;
+	}
+	return 0;
+}
+
+Python:
+for a in range(5, 10):
+	if a < 10:
+		print 'a = ', a
+		a += 1
+	else:
+		break
+		
+编译：
+g++ 文件名.cpp -o 文件名
+编译后会在文件夹生成一个可执行文件，同样要在终端中运行
+
+运行：
+./文件名
+
+Python不用编译，Python：python 文件名.py
+
+面向对象：
+C++与Python都算是面向对象的语言，把含有相似的归为一个类，类里定义的变量叫属性，定义的函数叫方法。在我看来就是一个结构体可以包含函数而已，用法也类似。

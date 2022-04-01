@@ -1,0 +1,12 @@
+Client相当于决定是否发送指令，Server则负责接受指令驱动下一级
+数据结构：Trigger
+如何实现一个服务器：
+①初始化ROS节点
+②创建Server实例
+③循环等待服务请求，进入回调函数
+④在回调函数中完成服务功能的处理，并反馈应答数据
+运行服务器：
+roscore
+rosrun turtlesim turtlesim_node
+rosrun learning_service turtle_command_server
+rosservice call/turtle_command"{}"

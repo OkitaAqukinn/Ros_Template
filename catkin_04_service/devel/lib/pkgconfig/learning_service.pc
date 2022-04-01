@@ -1,0 +1,8 @@
+prefix=/home/jacky/桌面/Ros_Template/catkin_04_service/devel
+
+Name: learning_service
+Description: Description of learning_service
+Version: 0.0.0
+Cflags: -I/home/jacky/桌面/Ros_Template/catkin_04_service/devel/include
+Libs: -L${prefix}/lib 
+Requires: geometry_msgs roscpp rospy std_msgs turtlesim message_runtime

@@ -1,0 +1,35 @@
+当我们在自己开放过程当中ROS给我们定义好的消息不能满足要求，需要我们自定义消息类型
+自定义话题消息：
+①在功能包根目录下创建文件夹命名为msg（必须）
+②定义.msg文件（文件和语言无关,系统编译时自动将其变成cpp或py语言）
+③在package.xml中添加功能包依赖
+<build_depend>message_generation</build_depend>
+<exec_depend>message_runtime</exec_depend>
+（功能是动态生成程序,一个是编译依赖一个是执行依赖）
+④在CMakeList.txt添加编译选项
+在find package栏添加message_generation
+Declare ROS messages, services and actions栏添加：
+add_message_files(FILES Person.msg)
+generate_messages(DEPENDENCIES std_msgs)
+catkin_package栏添加message runtime,且把编译依赖取注释
+catkin_make编译成功后，即可在根目录devel/include下看到编译生成的.h文件，是系统根据.msg生成的cpp头文件
+
+在前两讲发布者、订阅者的cpp文件中包含person.h，初始化并发布消息
+
+CMakeLists.txt中添加：
+add_executable(person_publisher src/person_publisher.cpp)
+target_link_libraries(person_publisher ${catkin_LIBRARIES})
+add_dependencies(person_publisher ${PROJECT_NAME}_generate_messages_cpp)
+
+add_executable(person_subscriber src/person_subscriber.cpp)
+target_link_libraries(person_subscriber ${catkin_LIBRARIES})
+add_dependencies(person_subscriber ${PROJECT_NAME}_generate_messages_cpp)
+新增的话是用来动态地与person.h做链接的
+
+运行：
+roscore
+rosrun learning_topic person_publisher
+rosrun learning_topic person_subscriber
+
+注意，此时运行成功后关闭master后，两者仍在收发信息，这是因为master起到介绍两者认识的作用，一旦建立连接，后续就两者自己消息收发了
+

@@ -1,0 +1,29 @@
+TF意为transform，是用于坐标系变换的重要功能包，把许多复杂的底层数学运算封装起来，用户调用即可，避免重复造轮子。
+TF是有时间属性的，他默认记录机器人十秒钟内全部坐标系的位置信息，用户可以直接获取任一坐标系十秒内的位置。
+TF坐标变换通过广播TF变换、监听TF变换实现，和之前的topic、service不同，以树的形式存放。
+--------------------------------------------------------------
+创建功能包：
+cd
+catkin_create_pkg learning_tf roscpp rospy tf turtlesim
+如何实现一个tf广播器：
+①定义TF广播器(TransformBroadcaster)
+②创建坐标变换值
+③发布坐标变换(sendTransform)
+如何实现一个tf监听器：
+①定义TF监听器(TransformListener)
+②查找坐标变换(waitForTransform、lookupTransform)
+编译：
+add_executable(turtle_tf_broadcaster src/turtle_tf_broadcaster.cpp)
+target_link_libraries(turtle_tf_broadcaster ${catkin_LIBRARIES})
+
+add_executable(turtle_tf_listener src/turtle_tf_listener.cpp)
+target_link_libraries(turtle_tf_listener ${catkin_LIBRARIES})
+运行：
+roscore
+rosrun turtlesim turtlesim_node
+rosrun learning_tf turtle_tf_broadcaster __name:=turtle1_tf_broadcaster /turtle1     (重映射机制)
+rosrun learning_tf turtle_tf_broadcaster __name:=turtle2_tf_broadcaster /turtle2     (重映射机制)
+rosrun learning_tf turtle_tf_listener
+(创建海龟2并根据海龟1不断跟随运动)
+rosrun turtlesim turtle_teleop_key
+重映射是因为程序里节点初始化已经有命名了，但用以程序运行两次，避免节点冲突，使用重映射重命名，直接取代程序里初始化的名字

@@ -1,0 +1,2 @@
+tast_pkg
+-DCATKIN_DEVEL_PREFIX=/home/jacky/桌面/Ros_Template/catkin_00_wstest/devel -DCMAKE_INSTALL_PREFIX=/home/jacky/桌面/Ros_Template/catkin_00_wstest/install -G Unix Makefiles

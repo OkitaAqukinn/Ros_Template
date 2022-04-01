@@ -1,0 +1,61 @@
+roslaunch bingda_tutorials gazebo_world.launch 
+------------------------------------------------------
+urdf：
+link、joint标签以xml文件编写来使用
+link包含inertial、visual、collision三部分标签
+joint在命名的时候还要定义类型（关节活动方式）
+joint必须包含parent、child两部分标签（主link与副link）
+功能包中urdf文件夹有一个mybot实例
+urdf文件编写完成之后可以在文件所在目录运行：check_urdf xxx.urdf检查是否xml格式正确，并查看所有link
+现在可以使用launch文件加载此urdf文件(RViz)，功能包里可通过：
+roslaunch bingda_tutorials diaplay_robot.launch运行
+若使用gazebo打开，也可通过：
+roslaunch bingda_tutorials gazebo_robot.launch运行，同时launch文件也会加载此前画好的world
+但在gazebo中现在还不能进行仿真，也没有显示出颜色（urdf的颜色标签在gazebo不生效，要使用gazebo自己的颜色标签）
+----------------------------------------------------------
+执行器与传感器的安装
+xacro文件：是简化代码的一种手段（功能包urdf文件夹有两者mybot，可以对比看看）
+文件中增加了imu、laser和camera的link，
+但此文件是和模型相关的，和仿真相关的放在mybot.gazebo.xacro
+此文件中大量使用了gazebo标签，而传感器则是以plugin的方式载入的，在wiki中可查看可载入的传感器执行器的xml文件格式
+同样可以使用launch文件启动：
+roslaunch bingda_tutorials simulation_robot.launch
+现在可以进行仿真：
+查看当前话题：rostopic list
+可以使用rostopic info /xxx查看发布者订阅者
+可以看到许多由gazebo发布的话题了
+rqt_image_view选择话题可以看见相机捕获到的图像了
+另开终端rosrun teleop_twist_keyboard teleop_twist_keyboard.py可以使用遥控，可以看到仿真器中的机器会运动，相机也有捕获到数据
+--------------------------------------------------------------
+关于建图和导航的补充说明：
+由于在之前的课程中我们已经在PC中安装了设建图导航相关的功能包，所以在这个专题中没有特别说明，导致部分同学建图导航功能无法正常运行。
+建图导航相关包安装方法：
+cd ~/catkin_ws/src/
+
+git clone https://gitee.com/bingda-robot/robot_navigation.git
+
+cd ~/catkin_ws/
+
+catkin_make
+
+sudo apt-get install ros-$ROS_DISTRO-amcl ros-$ROS_DISTRO-move-base ros-$ROS_DISTRO-slam-gmapping ros-$ROS_DISTRO-slam-karto ros-$ROS_DISTRO-cartographer ros-$ROS_DISTRO-cartographer-ros ros-$ROS_DISTRO-dwa-local-planner ros-$ROS_DISTRO-teb-local-planner ros-$ROS_DISTRO-map-server ros-$ROS_DISTRO-hector-slam*
+
+echo "export BASE_TYPE=NanoRobot" >> ~/.bashrc
+
+source  ~/.bashrc
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

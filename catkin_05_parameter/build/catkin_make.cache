@@ -1,0 +1,2 @@
+learning_parameter
+-DCATKIN_DEVEL_PREFIX=/home/jacky/桌面/Ros_Template/catkin_05_parameter/devel -DCMAKE_INSTALL_PREFIX=/home/jacky/桌面/Ros_Template/catkin_05_parameter/install -G Unix Makefiles
